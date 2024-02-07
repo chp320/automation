@@ -29,5 +29,25 @@
 		<javac srcdir="${src.dir}" destdir="${build.prod.dir}" includeantruntime="false">
 			<classpath refid="project.classpath" />
 		</javac>
-	</target>	
+	</target>
+
+	<!-- 테스트 소스 파일을 컴파일 하는 별도의 빌드 타겟 정의 -->
+	<target name="compile-tests" depends="compile">
+		<javac srcdir="${test.dir}" destdir="${build.test.dir}" includeantruntime="false">
+			<classpath refid="project.classpath" />
+		</javac>
+	</target>
+
+	<!-- JUnit 테스트를 자동 수행할 빌드 타겟 정의 -->
+	<target name="test" depends="compile-tests">
+		<junit haltonfailure="true">
+			<classpath refid="project.classpath" />
+			<formatter type="brief" usefile="false" />
+			<batchtest>
+				<fileset dir="${build.test.dir}" includes="**/*Test.class" />
+			</batchtest>
+			<sysproperty key="doc.dir" value="${doc.dir}" />
+			<sysproperty key="index.dir" value="${index.dir}" />
+		</junit>
+	</target>
 </project>
