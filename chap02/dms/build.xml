@@ -7,7 +7,7 @@
 	<property name="index.dir" location="index" />
 	<property name="src.dir" location="src" />
 	<property name="test.dir" location="test" />
-	<property name ="vendor.lib.dir" location="verndor/lib" />
+	<property name ="vendor.lib.dir" location="vendor/lib" />
 
 	<!-- 프로젝트 자바 클래스 경로 정의 -->
 	<path id="project.classpath">
