@@ -17,7 +17,10 @@ compile:
   * 대상 파일 - build.xml
   * javac 요소의 includeantruntime 속성 값을 false 로 변경
   * includeantruntime="false"
-
+```
+compile:
+    [javac] Compiling 2 source files to /home/opc/study/automation/chap02/dms/build/prod
+```
 
 
 
