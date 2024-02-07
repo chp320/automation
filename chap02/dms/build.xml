@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<project name="dms" default="compile" basedir".">
+	<property name="build.dir" location="build" />
+	<property name="build.prod.dir" location="${build.dir}/prod" />
+	<property name="build.test.dir" location="${build.dir}/test" />
+	<property name="doc.dir" location="doc" />
+	<property name="index.dir" location="index" />
+	<property name="src.dir" location="src" />
+	<property name="test.dir" location="test" />
+	<property name ="vendor.lib.dir" location="verndor/lib" />
+
+	<!-- 프로젝트 자바 클래스 경로 정의 -->
+	<path id="project.classpath">
+		<pathelement location="${build.prod.dir}" />
+		<pathelement location="${build.test.dir}" />
+		<fileset dir="${vendor.lib.dir}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<!-- 컴파일 시 자바 클래스 파일을 저장할 디렉토리 생성 -->
+	<target name="prepare">
+		<mkdir dir="${build.prod.dir}" />
+		<mkdir dir="${build.test.dir}" />
+	</target>
+
+	<!-- 컴파일 단계: 모든 소스 파일 컴파일, prepare target 요소에서 생성한 디렉토리에 결과 클래스 파일 저장 -->
+	<target name="compile" depends="prepare">
+		<javac srcdir="${src.dir}" destdir="${build.prod.dir}">
+			<classpath refid="project.classpath" />
+		</javac>
+	</target>	
+</project>

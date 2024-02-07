@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project name="test" basedir=".">
+	<description>
+		Ant test
+	</description>
+	
+	<property name="src" location="src" />
+	<property name="build" location="build" />
+
+	<target name="init" description="초기화 영역입니다.">
+		<delete dir="${build}" />
+		<mkdir dir="${build}" />
+	</target>
+	<target name="compile" depends="init" description="컴파일하는 영역입니다.">
+		<javac destdir="${build}" debug="on">
+			<src path="${src}" />
+		</javac>
+	</target>
+</project>
