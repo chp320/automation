@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="dms" default="compile" basedir=".">
+<project name="dms" default="compile" basedir="." xmlns:junit="antlib:org.apache.tools.ant.taskdefs.optional.junit">
 	<property name="build.dir" location="build" />
 	<property name="build.prod.dir" location="${build.dir}/prod" />
 	<property name="build.test.dir" location="${build.dir}/test" />
@@ -17,6 +17,12 @@
 			<include name="*.jar" />
 		</fileset>
 	</path>
+
+	<!-- test 타겟 수행 시 ant-junit.jar 를 인식못하고 있어서 아래 내용 추가 -->
+	<!-- <taskdef resource="junit-noframes" classpath="/usr/share/ant/lib/ant-junit-1.8.4.jar" /> -->
+	<taskdef name="junit" classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask">
+		<classpath refid="project.classpath" />
+	</taskdef>
 
 	<!-- 컴파일 시 자바 클래스 파일을 저장할 디렉토리 생성 -->
 	<target name="prepare">
@@ -40,7 +46,7 @@
 
 	<!-- JUnit 테스트를 자동 수행할 빌드 타겟 정의 -->
 	<target name="test" depends="compile-tests">
-		<junit haltonfailure="true">
+		<junit haltonfailure="true" fork="true">
 			<classpath refid="project.classpath" />
 			<formatter type="brief" usefile="false" />
 			<batchtest>
