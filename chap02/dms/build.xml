@@ -56,4 +56,8 @@
 			<sysproperty key="index.dir" value="${index.dir}" />
 		</junit>
 	</target>
+
+	<target name="clean">
+		<delete dir="${build.dir}" />
+	</target>
 </project>
