@@ -1,11 +1,11 @@
 import java.io.File
 
 class Build {
-	srcDir = "src"
-	buildDir = "build"
-	buildProdDir = buildDir + File.separator + "prod"
-	vendorLibDir = "vendor" + File.separator + "lib"
-	ant = new AntBuilder()
+	def srcDir = "src"
+	def buildDir = "build"
+	def buildProdDir = buildDir + File.separator + "prod"
+	def vendorLibDir = "vendor" + File.separator + "lib"
+	def ant = new AntBuilder()
 
 	void clean() {
 		ant.delete(dir: buildDir)
