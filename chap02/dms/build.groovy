@@ -18,7 +18,7 @@ class Build {
 
 	void compile() {
 		prepare()
-		ant.javac(srcdir: srcDir, destDir: buildProdDir, classpath: projectClasspath())
+		ant.javac(srcdir: srcDir, destDir: buildProdDir, classpath: projectClasspath(), includeantruntime: false)
 	}
 
 	String projectClasspath() {
